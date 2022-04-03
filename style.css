@@ -1,0 +1,443 @@
+@font-face {
+  font-family: "din";
+  src: url("font/Din/Din_Regular.ttf");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "din";
+  src: url("font/Din/Din_Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "din";
+  src: url("font/Din/Din_Medium.ttf");
+  font-weight: 500;
+}
+:root {
+  --widthImg: 120px;
+  --heightImg: 100px;
+  --widthbtn: 100px;
+  --heightbtn: 100px;
+  --lineWidthBorder: 8px;
+  --borderColor: white;
+}
+
+* {
+  font-family: "din";
+  font-weight: normal;
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  visibility: hidden;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  visibility: hidden;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.557);
+  opacity: 0;
+  transition: 2s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  opacity: 1;
+}
+.app {
+  direction: ltr;
+  position: fixed;
+  left: 0%;
+  height: 0%;
+  right: 0%;
+  bottom: 0%;
+  height: 100%;
+  width: 100%;
+  padding: 20px 25px 25px 20px;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #182f69;
+}
+.parent {
+  width: 100%;
+  height: 100%;
+  padding-inline-start: 8px;
+  padding-top: 13px;
+  padding-bottom: 5px;
+  margin: auto;
+  position: relative;
+  /* background-color: green; */
+  z-index: 0;
+  opacity: 0;
+  animation: showParent 1s linear 0s 1 normal forwards;
+}
+.parent::before {
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  height: calc(100% - var(--heightImg));
+  width: 100%;
+  padding: 0%;
+  margin: 0%;
+  border-top: var(--lineWidthBorder) var(--borderColor) solid;
+  border-right: var(--lineWidthBorder) var(--borderColor) solid;
+  border-radius: 4px;
+  opacity: 0;
+  transition: 2s;
+}
+.parent::after {
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  height: 100%;
+  width: calc(100% - var(--widthImg));
+  padding: 0%;
+  margin: 0%;
+  border-bottom: var(--lineWidthBorder) var(--borderColor) solid;
+  border-left: var(--lineWidthBorder) var(--borderColor) solid;
+  border-radius: 4px;
+  opacity: 0;
+  transition: 2s;
+}
+img.logo {
+  width: calc(var(--widthImg) - calc(var(--lineWidthBorder) * 2));
+  height: calc(var(--heightImg) - calc(var(--lineWidthBorder) * 2));
+  position: absolute;
+  right: 50%;
+  bottom: 70%;
+  transform: translate(50%, 50%) scale(2);
+  z-index: 55;
+  /* transition: 2s; */
+  /* right: 00%;
+    bottom: 00%;
+    transform: translate(var(--lineWidthBorder), var(--lineWidthBorder)) scale(1); */
+}
+.btn-start {
+  z-index: 1;
+  cursor: pointer;
+  width: var(--widthbtn);
+  height: var(--heightbtn);
+  /* background-color: green; */
+  /* border: 5px yellow solid; */
+  position: absolute;
+  right: 50%;
+  bottom: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(50%, 50%);
+}
+.btn-start div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-start .circle-4 {
+  width: 100%;
+  height: 100%;
+  border: 2px rgba(255, 255, 255, 0) solid;
+  border-radius: 50%;
+}
+.btn-start .circle-3 {
+  width: 80%;
+  height: 80%;
+  border: 2px rgba(255, 255, 255, 0) solid;
+  border-radius: 50%;
+}
+.btn-start .circle-2 {
+  width: 80%;
+  height: 80%;
+  border: 2px rgba(255, 255, 255, 0) solid;
+  border-radius: 50%;
+}
+.btn-start .circle-1 {
+  width: 80%;
+  height: 80%;
+  border: 2px rgba(255, 255, 255) solid;
+  border-radius: 50%;
+}
+/* Frame Langs */
+.frame-langs {
+  /* padding: 10px; */
+  z-index: 2;
+  width: 100%;
+  height: 99%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  /* place-items: center; */
+}
+.lang {
+  cursor: pointer;
+  margin: 15px;
+  /* font-size: 18px; */
+  transition: 1s;
+  color: white;
+}
+.welcome {
+  position: absolute;
+  width: 100%;
+  font-size: 30px;
+  font-weight: 900;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  top: 0%;
+  animation: fadeWelcome 4s ease 0s 1 normal forwards;
+}
+/* End Frame Langs */
+
+/* Sections */
+.sections {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+.sections .child {
+  cursor: pointer;
+  margin: 0% 0.5%;
+  width: 20%;
+  display: inline;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+  transition-timing-function: linear;
+}
+.child-1 {
+  animation: downToUp 0.4s linear 0s 1 normal forwards;
+}
+.child-2 {
+  animation: downToUp 0.5s linear 0s 1 normal forwards;
+}
+.child-3 {
+  animation: downToUp 0.6s linear 0s 1 normal forwards;
+}
+.child-4 {
+  animation: downToUp 0.7s linear 0s 1 normal forwards;
+}
+.child-5 {
+  animation: downToUp 0.8s linear 0s 1 normal forwards;
+}
+.full-child {
+  width: 100% !important;
+}
+.fade-children {
+  width: 0% !important;
+  margin: 0% !important;
+  opacity: 0 !important;
+}
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #444;
+}
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -webkit-mask-image: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 1)
+  );
+  mask-image: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 1)
+  );
+  -webkit-mask-size: 100% 200%;
+  mask-size: 100% 200%;
+
+  -webkit-mask-position: 0% 50%;
+  mask-position: 0% 50%;
+  /* animation: fadeInImg 3s linear 0s 3 normal; */
+}
+.txt {
+  position: absolute;
+  width: 80%;
+  font-size: 25px;
+  text-align: center;
+  color: white;
+  padding: 10px 0px;
+  bottom: 20%;
+  right: 50%;
+  transform: translate(50%);
+
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  /* animation-name: moveUpTxt; */
+}
+.txt-1 {
+  background-image: linear-gradient(
+    0deg,
+    #46916c 50%,
+    rgba(255, 255, 255, 0) 50%
+  );
+}
+.txt-2 {
+  background-image: linear-gradient(
+    0deg,
+    #c14e00 50%,
+    rgba(255, 255, 255, 0) 50%
+  );
+}
+.txt-3 {
+  background-image: linear-gradient(
+    0deg,
+    #0058b1 50%,
+    rgba(255, 255, 255, 0) 50%
+  );
+}
+.txt-4 {
+  background-image: linear-gradient(
+    0deg,
+    #383838 50%,
+    rgba(255, 255, 255, 0) 50%
+  );
+}
+.txt-5 {
+  background-image: linear-gradient(
+    0deg,
+    #59430e 50%,
+    rgba(255, 255, 255, 0) 50%
+  );
+}
+
+@keyframes moveUpTxt {
+  0% {
+    width: 80%;
+    bottom: 20%;
+    right: 50%;
+    transform: translate(50%);
+  }
+  100% {
+    width: 20%;
+    bottom: 80%;
+    right: 0%;
+    transform: translate(0%);
+  }
+}
+@keyframes moveDownTxt {
+  0% {
+    width: 20%;
+    bottom: 80%;
+    right: 0%;
+    transform: translate(0%);
+  }
+  100% {
+    width: 80%;
+    bottom: 20%;
+    right: 50%;
+    transform: translate(50%);
+  }
+}
+@keyframes downToUp {
+  0% {
+    transform: translate(0%, 100%);
+  }
+  100% {
+    transform: translate(0%, 0%);
+  }
+}
+/* End Sections */
+@keyframes showParent {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeWelcome {
+  0% {
+    opacity: 0;
+    top: 0%;
+  }
+  50% {
+    opacity: 1;
+    top: 50%;
+  }
+  100% {
+    opacity: 0;
+    top: 0%;
+  }
+}
+@media (max-width: 900px) and (orientation: portrait) {
+  :root {
+    --lineWidthBorder: 4px;
+  }
+  .parent {
+    padding-inline-start: 4px;
+    padding-top: 6px;
+    padding-bottom: 2px;
+  }
+  .txt {
+    font-size: 12px;
+  }
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  :root {
+    --widthImg: 80px;
+    --heightImg: 70px;
+    --widthbtn: 70px;
+    --heightbtn: 70px;
+    --lineWidthBorder: 4px;
+    --borderColor: white;
+  }
+  .btn-start {
+    width: var(--widthbtn);
+    height: var(--heightbtn);
+    bottom: 25%;
+  }
+  .parent {
+    padding-inline-start: 4px;
+    padding-top: 7px;
+    padding-bottom: 3px;
+  }
+  .txt {
+    font-size: 12px;
+  }
+}
